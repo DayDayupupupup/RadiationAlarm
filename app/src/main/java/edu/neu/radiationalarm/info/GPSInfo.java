@@ -1,5 +1,6 @@
 package edu.neu.radiationalarm.info;
 
+import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+
+import java.security.Permission;
 
 import edu.neu.radiationalarm.activity.MainActivity;
 
@@ -43,14 +46,14 @@ public class GPSInfo {
     }
 
     public void getLocation(){
-        if (ContextCompat.checkSelfPermission().)
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (location != null){
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
-        }else{
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,  locationListener);
-        }
+
+//        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        if (location != null){
+//            latitude = location.getLatitude();
+//            longitude = location.getLongitude();
+//        }else{
+//            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,  locationListener);
+//        }
     }
     private void toggleGPS() {
 

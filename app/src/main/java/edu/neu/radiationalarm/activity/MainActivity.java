@@ -8,8 +8,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -79,24 +82,49 @@ public class MainActivity extends BaseActivity {
 			initView();
 
 		}
-		requestPermission(1, Manifest.permission.ACCESS_FINE_LOCATION, new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(MainActivity.this, "Location OK", Toast.LENGTH_SHORT).show();
-					}
-				}, new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(MainActivity.this, "Location Denied", Toast.LENGTH_SHORT).show();
-					}
-				}
-		);
+//		requestPermission(1, Manifest.permission.ACCESS_FINE_LOCATION, new Runnable() {
+//					@Override
+//					public void run() {
+//						Toast.makeText(MainActivity.this, "Location OK", Toast.LENGTH_SHORT).show();
+//					}
+//				}, new Runnable() {
+//					@Override
+//					public void run() {
+//						Toast.makeText(MainActivity.this, "Location Denied", Toast.LENGTH_SHORT).show();
+//					}
+//				}
+//		);
+//
 
-		/*Intent intent = new Intent(this, LacService.class);
-		getApplicationContext().bindService(intent, conn, Service.BIND_AUTO_CREATE);
+	}
+	public void checkPermission(){
+		if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+			//has permission, do operation directly
 
-		initView();*/
+			Log.i("提示：", "user has the permission already!");
+		} else {
+			//do not have permission
+			Log.i("提示：", "user do not have this permission!");
 
+			// Should we show an explanation?
+			if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+					Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+				// Show an explanation to the user *asynchronously* -- don't block
+				// this thread waiting for the user's response! After the user
+				// sees the explanation, try again to request the permission.
+				Log.i("提示：", "we should explain why we need this permission!");
+			} else {
+
+				// No explanation needed, we can request the permission.
+				Log.i("提示：", "==request the permission==");
+
+//				ActivityCompat.requestPermissions(1,Manifest.permission.ACCESS_FINE_LOCATION,);
+				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+				// app-defined int constant. The callback method gets the
+				// result of the request.
+			}
+		}
 	}
 
 	@Override
