@@ -1,7 +1,9 @@
 package edu.neu.radiationalarm.activity;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
@@ -46,6 +48,8 @@ public class MainActivity extends BaseActivity {
 
 	public LacService.MyBinder binder;
 	private MyServiceConnection conn = new MyServiceConnection();
+
+	final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
 
 	private MainPagerAdapter mMainPagerAdapter;
@@ -97,6 +101,7 @@ public class MainActivity extends BaseActivity {
 //
 
 	}
+	@TargetApi(23)
 	public void checkPermission(){
 		if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
 			//has permission, do operation directly
@@ -105,25 +110,26 @@ public class MainActivity extends BaseActivity {
 		} else {
 			//do not have permission
 			Log.i("提示：", "user do not have this permission!");
+            requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_ASK_PERMISSIONS);
+			return;
+		}
+	}
 
-			// Should we show an explanation?
-			if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
-					Manifest.permission.ACCESS_FINE_LOCATION)) {
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		switch (requestCode) {
+			case REQUEST_CODE_ASK_PERMISSIONS:
+				if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					// Permission Granted
 
-				// Show an explanation to the user *asynchronously* -- don't block
-				// this thread waiting for the user's response! After the user
-				// sees the explanation, try again to request the permission.
-				Log.i("提示：", "we should explain why we need this permission!");
-			} else {
-
-				// No explanation needed, we can request the permission.
-				Log.i("提示：", "==request the permission==");
-
-//				ActivityCompat.requestPermissions(1,Manifest.permission.ACCESS_FINE_LOCATION,);
-				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-				// app-defined int constant. The callback method gets the
-				// result of the request.
-			}
+				} else {
+					// Permission Denied
+					Toast.makeText(MainActivity.this, "lOCATION Denied", Toast.LENGTH_SHORT)
+							.show();
+				}
+				break;
+			default:
+				super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		}
 	}
 

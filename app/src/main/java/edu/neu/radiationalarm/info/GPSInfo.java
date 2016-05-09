@@ -1,6 +1,7 @@
 package edu.neu.radiationalarm.info;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.RequiresPermission;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -20,7 +22,7 @@ import edu.neu.radiationalarm.activity.MainActivity;
  * Created by Mac on 2016/5/6.
  */
 public class GPSInfo {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = "GPS:";
     private LocationManager lm;
     private double latitude;
     private double longitude;
@@ -45,9 +47,9 @@ public class GPSInfo {
         }
     }
 
-    public void getLocation(){
+     public void getLocation(){
 
-//        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 //        if (location != null){
 //            latitude = location.getLatitude();
 //            longitude = location.getLongitude();
