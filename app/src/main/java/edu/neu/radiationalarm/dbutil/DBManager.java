@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.telephony.CellInfo;
 import android.telephony.NeighboringCellInfo;
 import android.util.Log;
 
@@ -33,11 +34,11 @@ public class DBManager {
 
         db.execSQL("delete from around");
         db.execSQL("delete from station");
-        List<NeighboringCellInfo> infos = info.getInfo();
-        for(NeighboringCellInfo neigh : infos) {
-            db.execSQL("insert into around values(?, ?, ?)", new String[] {null,
-                    String.valueOf(neigh.getLac()), String.valueOf(neigh.getCid())});
-        }
+        List<CellInfo> infos = info.getInfo();
+//        for(CellInfo neigh : infos) {
+//            db.execSQL("insert into around values(?, ?, ?)", new String[] {null,
+//                    String.valueOf(neigh.getLac()), String.valueOf(neigh.getCid())});
+//        }
 
         db.execSQL("insert into station values(?, ?, ?, ?, ?)", new String[]{null,
                 String.valueOf(info.getMcc()), String.valueOf(info.getMnc()),

@@ -1,0 +1,2 @@
+CHANGED,F:\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\dbutil\DBHelper$override.class
