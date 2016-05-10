@@ -8,11 +8,13 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import edu.neu.radiationalarm.dbutil.DBManager;
+import edu.neu.radiationalarm.info.GPSInfo;
 import edu.neu.radiationalarm.info.GSMCellLocationInfo;
 
 public class LacService extends Service {
 
     private GSMCellLocationInfo infos;
+    private GPSInfo gpsInfo;
     private MyBinder binder;
     private DBManager manager;
 
@@ -26,6 +28,7 @@ public class LacService extends Service {
         binder = new MyBinder();
         Log.d("验证信息","LacService");
         infos = new GSMCellLocationInfo(this);
+        gpsInfo = new GPSInfo(this);
         manager = new DBManager(this);
         startUpdate();
 
@@ -38,6 +41,7 @@ public class LacService extends Service {
         public GSMCellLocationInfo getInfo() {
             return infos;
         }
+        public GPSInfo getGPSInfo(){return gpsInfo;}
 
         public void setFragmentListener_1(FragmentListener_1 listener_1) {
             LacService.this.listener_1 = listener_1;
@@ -66,7 +70,7 @@ public class LacService extends Service {
                     }
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(1000*60);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

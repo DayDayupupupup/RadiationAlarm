@@ -22,6 +22,7 @@ public class DBManager {
     private DBHelper helper;
     private SQLiteDatabase db;
 
+
     public DBManager(Context context) {
         helper = new DBHelper(context);
         db = helper.getWritableDatabase();
@@ -48,10 +49,10 @@ public class DBManager {
             cursor.moveToNext();
             db.execSQL("delete from imm where id = ?", new String[]{String.valueOf(cursor.getInt(0))});
             db.execSQL("insert into imm values(?, ?, ?)", new String[]{null,
-                    String.valueOf(info.getStrengh()), String.valueOf(System.currentTimeMillis())});
+                    String.valueOf(info.getStrengh()), "datetime('now','localtime')"});
         } else {
             db.execSQL("insert into imm values(?, ?, ?)", new String[]{null,
-                    String.valueOf(info.getStrengh()), String.valueOf(System.currentTimeMillis())});
+                    String.valueOf(info.getStrengh()), "datetime('now','localtime')"});
         }
 
         db.execSQL("insert into record_day values(?, ?, ?)", new String[]{null,

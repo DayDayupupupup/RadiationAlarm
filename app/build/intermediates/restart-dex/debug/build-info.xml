@@ -4,26 +4,26 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="18687341705571" >
+    timestamp="20883855170126" >
 
     <task
         name="javac"
-        duration="2196" />
+        duration="2512" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="2188" />
+        duration="545" />
     <task
         name="verifier"
-        duration="453" />
+        duration="700" />
 
     <artifact
         location="C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="18687341705571" >
+    <build timestamp="20883855170126" >
         <artifact
             location="C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />

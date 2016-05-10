@@ -86,51 +86,19 @@ public class MainActivity extends BaseActivity {
 			initView();
 
 		}
-//		requestPermission(1, Manifest.permission.ACCESS_FINE_LOCATION, new Runnable() {
-//					@Override
-//					public void run() {
-//						Toast.makeText(MainActivity.this, "Location OK", Toast.LENGTH_SHORT).show();
-//					}
-//				}, new Runnable() {
-//					@Override
-//					public void run() {
-//						Toast.makeText(MainActivity.this, "Location Denied", Toast.LENGTH_SHORT).show();
-//					}
-//				}
-//		);
-//
-
-	}
-	@TargetApi(23)
-	public void checkPermission(){
-		if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-			//has permission, do operation directly
-
-			Log.i("提示：", "user has the permission already!");
-		} else {
-			//do not have permission
-			Log.i("提示：", "user do not have this permission!");
-            requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_ASK_PERMISSIONS);
-			return;
-		}
-	}
-
-	@Override
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-		switch (requestCode) {
-			case REQUEST_CODE_ASK_PERMISSIONS:
-				if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					// Permission Granted
-
-				} else {
-					// Permission Denied
-					Toast.makeText(MainActivity.this, "lOCATION Denied", Toast.LENGTH_SHORT)
-							.show();
+		requestPermission(1, Manifest.permission.ACCESS_FINE_LOCATION, new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(MainActivity.this, "Location OK", Toast.LENGTH_SHORT).show();
+					}
+				}, new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(MainActivity.this, "Location Denied", Toast.LENGTH_SHORT).show();
+					}
 				}
-				break;
-			default:
-				super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		}
+		);
+
 	}
 
 	@Override

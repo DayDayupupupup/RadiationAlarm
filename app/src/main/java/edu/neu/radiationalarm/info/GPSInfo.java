@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -29,10 +30,13 @@ public class GPSInfo {
 
 
     public GPSInfo(Context context){
+        Log.e(TAG,"准备获取GPS信息");
         lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            getLocation();
+            Log.e(TAG,"GPS已开");
+            getLocation(context);
         }else {
+            Log.e(TAG,"GPS未开，开启gps");
             Intent GPSIntent = new Intent();
             GPSIntent.setClassName("com.android.settings",
                     "com.android.settings.widget.SettingsAppWidgetProvider");
@@ -43,24 +47,31 @@ public class GPSInfo {
             } catch (PendingIntent.CanceledException e) {
                 e.printStackTrace();
             }
-            getLocation();
+            getLocation(context);
         }
     }
 
-     public void getLocation(){
+     public void getLocation(Context context){
+         Log.e(TAG,"开始获取GPS信息");
+         if (ContextCompat.checkSelfPermission(context,Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+             Log.e(TAG,"已授予gps权限");
+             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+             Log.e(TAG,"能获取到location");
+             if (location != null){
+                 Log.e(TAG,"当前可以获取到gps");
+                 latitude = location.getLatitude();
+                 longitude = location.getLongitude();
+                 Log.e(TAG, "经度：" + latitude+ " 纬度: " + longitude);
 
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        if (location != null){
-//            latitude = location.getLatitude();
-//            longitude = location.getLongitude();
-//        }else{
-//            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,  locationListener);
-//        }
+             }else{
+                 Log.e(TAG,"当前位置获取不到gps");
+                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,  locationListener);
+             }
+         }else {
+             Log.e(TAG,"未授予gps权限");
+         }
     }
-    private void toggleGPS() {
 
-
-    }
     private final LocationListener locationListener = new LocationListener() {
         // Provider的状态在可用、暂时不可用和无服务三个状态直接切换时触发此函数
         @Override
@@ -86,6 +97,9 @@ public class GPSInfo {
             }
         }
     };
+
+    public double getLatitude(){return  latitude;}
+    public double getLongitude(){return longitude;}
 
 
 }

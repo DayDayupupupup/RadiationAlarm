@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table if not exists imm (" +
                 "id integer primary key autoincrement," +
                 "BSSS int," +
-                "time varchar(255))");
+                "time timestamp not null default (datetime('now','localtime')))");
         db.execSQL("create table if not exists around (" +
                 "id integer primary key autoincrement," +
                 "LAC int," +
@@ -38,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table if not exists record_day (" +
                 "id integer primary key autoincrement," +
                 "strength int," +
-                "time varchar(255))");
+                "time timestamp not null default (datetime('now','localtime')))");
         db.execSQL("create table if not exists record_month (" +
                 "id integer primary key autoincrement," +
                 "strength int," +

@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,10 +44,13 @@ public class BaseActivity extends AppCompatActivity {
             int checkCallPhonePermission = ContextCompat.checkSelfPermission(getApplicationContext(), permission);
             if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
                 //弹出对话框接收权限
+                Log.i("提示：", "user do not have this permission!");
                 ActivityCompat.requestPermissions(BaseActivity.this, new String[]{permission}, id);
+                Log.i("提示：", "已弹出询问框!");
                 return;
             } else {
                 allowableRunnable.run();
+                Log.i("提示：", "user has the permission already!");
             }
         } else {
             allowableRunnable.run();

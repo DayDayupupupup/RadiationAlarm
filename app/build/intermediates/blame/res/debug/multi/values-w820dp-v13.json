@@ -14,10 +14,10 @@
                     "file": "C:\\Users\\Mac\\AndroidStudioProjects\\RadiationAlarm\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "position": {
                         "startLine": 4,
-                        "startColumn": 1,
-                        "startOffset": 289,
-                        "endColumn": 54,
-                        "endOffset": 342
+                        "startColumn": 4,
+                        "startOffset": 295,
+                        "endColumn": 57,
+                        "endOffset": 348
                     }
                 }
             }
