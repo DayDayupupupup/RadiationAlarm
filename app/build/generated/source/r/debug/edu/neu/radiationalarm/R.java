@@ -2938,7 +2938,7 @@ containing a value of this type.
         public static final int beginning=0x7f0c0030;
         public static final int bottom=0x7f0c001c;
         public static final int bsss=0x7f0c007e;
-        public static final int bsss_title=0x7f0c007d;
+        public static final int bsss_title=0x7f0c0078;
         public static final int buttonPanel=0x7f0c0044;
         public static final int cancel_action=0x7f0c008f;
         public static final int center=0x7f0c001d;
@@ -2946,8 +2946,8 @@ containing a value of this type.
         public static final int center_vertical=0x7f0c001f;
         public static final int checkbox=0x7f0c0052;
         public static final int chronometer=0x7f0c0095;
-        public static final int cid=0x7f0c007c;
-        public static final int cid_title=0x7f0c007b;
+        public static final int cid=0x7f0c007d;
+        public static final int cid_title=0x7f0c007c;
         public static final int clip_horizontal=0x7f0c002b;
         public static final int clip_vertical=0x7f0c002c;
         public static final int collapseActionView=0x7f0c0033;
@@ -2983,8 +2983,8 @@ containing a value of this type.
         public static final int image=0x7f0c003f;
         public static final int info=0x7f0c0099;
         public static final int item_touch_helper_previous_elevation=0x7f0c0005;
-        public static final int lac=0x7f0c007a;
-        public static final int lac_title=0x7f0c0079;
+        public static final int lac=0x7f0c007b;
+        public static final int lac_title=0x7f0c007a;
         public static final int left=0x7f0c0022;
         public static final int line1=0x7f0c0093;
         public static final int line3=0x7f0c0097;
@@ -3008,7 +3008,7 @@ containing a value of this type.
         public static final int nearby_base_station_card=0x7f0c007f;
         public static final int nearby_base_station_list=0x7f0c0081;
         public static final int nearby_base_station_title=0x7f0c0080;
-        public static final int network_provider=0x7f0c0078;
+        public static final int network_provider=0x7f0c0079;
         public static final int network_provider_title=0x7f0c0077;
         public static final int network_type=0x7f0c0076;
         public static final int network_type_title=0x7f0c0075;

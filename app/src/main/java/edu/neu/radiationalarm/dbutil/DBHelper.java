@@ -30,10 +30,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 "id integer primary key autoincrement," +
                 "BSSS int," +
                 "time timestamp not null default (datetime('now','localtime')))");
-        db.execSQL("create table if not exists around (" +
-                "id integer primary key autoincrement," +
-                "LAC int," +
-                "CID int)");
+//        db.execSQL("create table if not exists around (" +
+//                "id integer primary key autoincrement," +
+//                "LAC int," +
+//                "CID int)");
 
         db.execSQL("create table if not exists record_day (" +
                 "id integer primary key autoincrement," +

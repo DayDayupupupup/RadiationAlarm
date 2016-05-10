@@ -7,6 +7,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-2.12/caches/modules-2/files-2.1/com.diogobernardino/williamchart/2.1/80afea7c26530bf37c56cf2cb48d389764f85fb8/williamchart-2.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.diogobernardino/williamchart/2.1/80afea7c26530bf37c56cf2cb48d389764f85fb8/williamchart-2.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

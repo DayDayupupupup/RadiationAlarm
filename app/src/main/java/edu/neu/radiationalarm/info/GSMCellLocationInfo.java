@@ -1,8 +1,15 @@
 package edu.neu.radiationalarm.info;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.location.LocationManager;
+import android.os.Build;
+import android.telephony.CellInfo;
+import android.telephony.CellInfoCdma;
+import android.telephony.CellInfoGsm;
+import android.telephony.CellInfoLte;
+import android.telephony.CellInfoWcdma;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
@@ -30,7 +37,7 @@ public class GSMCellLocationInfo {
     private int lac;
     private int cellid;
     private int strengh;
-    private List<NeighboringCellInfo> infos;
+    private List<CellInfo> infos;
     private List<RecentData> recentData;
 
 
@@ -48,6 +55,7 @@ public class GSMCellLocationInfo {
         updateInfo();
     }
 
+    @TargetApi(23)
     public void updateInfo() {
 
         String operator = manager.getNetworkOperator();
@@ -79,21 +87,47 @@ public class GSMCellLocationInfo {
 
         int strength = 0;
         /**通过getNeighboringCellInfo获取BSSS */
-        infos = manager.getNeighboringCellInfo();
-
-        for (NeighboringCellInfo info : infos) {
-            strength += (-133 + 2 * info.getRssi());// 获取邻区基站信号强度
-            //info.getLac();// 取出当前邻区的LAC
-            //info.getCid();// 取出当前邻区的CID
-
+//        infos = manager.getNeighboringCellInfo();
+        infos = manager.getAllCellInfo();
+        StringBuffer sb = new StringBuffer("总数 : " + infos.size() + "\n");
+        for (CellInfo info : infos) {
+            sb.append(info +"\n");
+            if(info instanceof CellInfoGsm){
+                int LAC = ((CellInfoGsm) info).getCellIdentity().getLac();
+                int CID = ((CellInfoGsm) info).getCellIdentity().getCid();
+                int BSSS = ((CellInfoGsm) info).getCellSignalStrength().getDbm();
+                Log.d("GsmCellInfo","LAC:"+LAC+" CID:"+CID+" BSSS:"+BSSS);
+            }else if (info instanceof CellInfoCdma){
+                int LAC = ((CellInfoCdma) info).getCellIdentity().getSystemId();//daiding
+                int CID = ((CellInfoCdma) info).getCellIdentity().getBasestationId();
+                int BSSS = ((CellInfoCdma) info).getCellSignalStrength().getDbm();
+                Log.d("CdmaCellInfo","LAC:"+LAC+" CID:"+CID+" BSSS:"+BSSS);
+            }else if(info instanceof CellInfoLte){
+                int LAC = ((CellInfoLte) info).getCellIdentity().getTac();
+                int CID = ((CellInfoLte) info).getCellIdentity().getPci();
+                int BSSS = ((CellInfoLte) info).getCellSignalStrength().getDbm();
+                Log.d("LTECellInfo","LAC:"+LAC+" CID:"+CID+" BSSS:"+BSSS);
+            }else if(info instanceof CellInfoWcdma){
+                int LAC = ((CellInfoWcdma) info).getCellIdentity().getLac();
+                int CID = ((CellInfoWcdma) info).getCellIdentity().getCid();
+                int BSSS = ((CellInfoWcdma) info).getCellSignalStrength().getDbm();
+                Log.d("LTECellInfo","LAC:"+LAC+" CID:"+CID+" BSSS:"+BSSS);
+            }else{
+                Log.d("CellInfo","Unknown Cell");
+            }
         }
+//            strength += (-133 + 2 * info.getRssi());// 获取邻区基站信号强度
+//            info.getLac();// 取出当前邻区的LAC
+//            info.getCid();// 取出当前邻区的CID
+//            Log.d("邻近基站","LAC:"+info.getLac()+"CID："+info.getCid()+"强度："+strength);
+
     }
 
     public int getCellid() {
         return cellid;
     }
 
-    public List<NeighboringCellInfo> getInfo() {
+    public List<CellInfo> getInfo() {
         return infos;
     }
 
