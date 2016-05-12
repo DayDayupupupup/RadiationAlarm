@@ -25,6 +25,7 @@ import edu.neu.radiationalarm.activity.MainActivity;
 public class GPSInfo {
     private static final String TAG = "GPS:";
     private LocationManager lm;
+    private Location location;
     private double latitude;
     private double longitude;
 
@@ -55,7 +56,7 @@ public class GPSInfo {
          Log.e(TAG,"开始获取GPS信息");
          if (ContextCompat.checkSelfPermission(context,Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
              Log.e(TAG,"已授予gps权限");
-             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+              location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
              Log.e(TAG,"能获取到location");
              if (location != null){
                  Log.e(TAG,"当前可以获取到gps");
@@ -101,5 +102,7 @@ public class GPSInfo {
     public double getLatitude(){return  latitude;}
     public double getLongitude(){return longitude;}
 
-
+    public Location getLocation() {
+        return location;
+    }
 }

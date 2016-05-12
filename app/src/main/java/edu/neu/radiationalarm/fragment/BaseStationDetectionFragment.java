@@ -16,6 +16,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import edu.neu.radiationalarm.R;
 import edu.neu.radiationalarm.activity.MainActivity;
+import edu.neu.radiationalarm.info.GPSInfo;
 import edu.neu.radiationalarm.info.GSMCellLocationInfo;
 import edu.neu.radiationalarm.service.LacService;
 
@@ -33,7 +34,10 @@ public class BaseStationDetectionFragment extends Fragment implements LacService
 	private TextView lac;
 	private TextView cid;
 	private TextView bsss;
+	private TextView latitude;
+	private TextView longitude;
 	private GSMCellLocationInfo info;
+	private GPSInfo gpsInfo;
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,11 +51,13 @@ public class BaseStationDetectionFragment extends Fragment implements LacService
 
 		ButterKnife.bind(this, rootView);
 
-		network_type = (TextView) rootView.findViewById(R.id.network_type);
+//		network_type = (TextView) rootView.findViewById(R.id.network_type);
 		network_provider = (TextView) rootView.findViewById(R.id.network_provider);
 		lac = (TextView) rootView.findViewById(R.id.lac);
 		cid = (TextView) rootView.findViewById(R.id.cid);
 		bsss = (TextView) rootView.findViewById(R.id.bsss);
+		latitude = (TextView) rootView.findViewById(R.id.latitude);
+		longitude = (TextView) rootView.findViewById(R.id.longitude);
 
 		initView(inflater.getContext());
 
@@ -92,9 +98,28 @@ public class BaseStationDetectionFragment extends Fragment implements LacService
 
 	private void updateText() {
 		info = ((MainActivity) getActivity()).getBinder().getInfo();
+//		if(info.getMcc()==460) {
+//			network_type.setText("中国");
+//		}
+		if(info.getMnc()==0){
+			network_provider.setText("中国移动");
+		}else if(info.getMnc()==1){
+			network_provider.setText("中国连通");
+		}else {
+			network_provider.setText("中国电信");
+		}
 		lac.setText(info.getLac() + "");
 		cid.setText(info.getCellid() + "");
 		bsss.setText(info.getStrengh() + "");
+
+		gpsInfo = ((MainActivity) getActivity()).getBinder().getGPSInfo();
+		if(gpsInfo.getLocation()!= null) {
+			latitude.setText(gpsInfo.getLatitude() + "");
+			longitude.setText(gpsInfo.getLongitude() + "");
+		}else {
+			latitude.setText("无");
+			longitude.setText("无");
+		}
 	}
 
 	@Override

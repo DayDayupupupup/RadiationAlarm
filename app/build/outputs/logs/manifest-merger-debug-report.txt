@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:2:1-32:12
+ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:2:1-36:12
 	package
 		ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml
@@ -77,6 +77,12 @@ activity#edu.neu.radiationalarm.activity.BaseActivity
 ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:29:9-68
 	android:name
 		ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:29:19-56
+meta-data#com.baidu.lbsapi.API_KEY
+ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:32:5-34:110
+	android:value
+		ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:34:9-107
+	android:name
+		ADDED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml:33:9-48
 uses-sdk
 INJECTED from F:\RadiationAlarm\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:20:5-43
