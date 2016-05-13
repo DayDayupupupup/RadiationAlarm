@@ -4,31 +4,34 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="22607038645411" >
+    timestamp="33229907100768" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="868" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="31" />
     <task
         name="verifier"
         duration="0" />
 
-    <build timestamp="21760521403390" >
+    <artifact
+        location="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+        type="DEX" />
+
+    <build timestamp="32675685839877" >
         <artifact
             location="F:\RadiationAlarm\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="22114612031342" >
+    <build timestamp="33229907100768" >
         <artifact
-            location="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
+            location="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
             type="DEX" />
     </build>
-    <build timestamp="22607038645411" />
 
 </instant-run>

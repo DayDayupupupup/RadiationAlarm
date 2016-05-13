@@ -13,6 +13,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="com.baidu.lbsapi.API_KEY"
+        android:value="94:F4:58:96:99:14:2B:82:6C:0D:16:16:D3:F8:F5:4F:35:90:A2:8F;edu.neu.radiationalarm" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

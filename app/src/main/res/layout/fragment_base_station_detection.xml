@@ -25,7 +25,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginLeft="12dp"
-					android:text="@string/phone_info_title"/>
+					android:text="基站信息"/>
 				<View
 					android:layout_width="6dp"
 					android:layout_height="wrap_content"
@@ -33,27 +33,25 @@
 					android:layout_alignBottom="@id/phone_info_title"
 					android:background="@color/colorPrimary"/>
 
-				<TextView
-					android:id="@+id/network_type_title"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_below="@id/phone_info_title"
-					android:text="@string/network_type_title"/>
-				<TextView
-					android:id="@+id/network_type"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_below="@id/network_type_title"/>
+				<!--<TextView-->
+					<!--android:id="@+id/network_type_title"-->
+					<!--android:layout_width="wrap_content"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:layout_below="@id/phone_info_title"-->
+					<!--android:text="国家"/>-->
+				<!--<TextView-->
+					<!--android:id="@+id/network_type"-->
+					<!--android:layout_width="wrap_content"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:layout_toEndOf="@+id/network_type_title"-->
+					<!--android:layout_toRightOf="@id/network_type_title"/>-->
+
 				<TextView
 					android:id="@+id/network_provider_title"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="@string/isp_title"
-					android:layout_marginLeft="77dp"
-					android:layout_marginStart="77dp"
-					android:layout_below="@+id/phone_info_title"
-					android:layout_toRightOf="@+id/bsss_title"
-					android:layout_toEndOf="@+id/bsss_title" />
+					android:layout_below="@id/phone_info_title"
+					android:text="@string/isp_title"/>
 				<TextView
 					android:id="@+id/network_provider"
 					android:layout_width="wrap_content"
@@ -64,7 +62,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_below="@id/network_provider"
-					android:text="@string/lac_title"/>
+					android:text="位置区域码LAC"/>
 				<TextView
 					android:id="@+id/lac"
 					android:layout_width="wrap_content"
@@ -74,10 +72,8 @@
 					android:id="@+id/cid_title"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="@string/cid_title"
-					android:layout_alignTop="@+id/lac_title"
-					android:layout_alignLeft="@+id/network_provider_title"
-					android:layout_alignStart="@+id/network_provider_title" />
+					android:layout_below="@id/lac"
+					android:text="基站编号CELLID"/>
 				<TextView
 					android:id="@+id/cid"
 					android:layout_width="wrap_content"
@@ -115,7 +111,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginLeft="12dp"
-					tools:text="邻近基站"/>
+					android:text="邻近基站"/>
 				<View
 					android:layout_width="6dp"
 					android:layout_height="wrap_content"
@@ -136,8 +132,7 @@
 			android:layout_height="wrap_content"
 			android:layout_below="@id/nearby_base_station_card"
 			app:cardUseCompatPadding="true"
-			app:elevation="2dp"
-			android:layout_alignParentBottom="true">
+			app:elevation="2dp">
 			<RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
@@ -148,22 +143,41 @@
 					android:paddingLeft="@dimen/activity_horizontal_margin"
 					android:paddingRight="@dimen/activity_horizontal_margin"
 					android:paddingTop="@dimen/activity_vertical_margin"
-					android:paddingBottom="@dimen/activity_vertical_margin"
-					android:layout_alignParentTop="true"
-					android:layout_alignParentLeft="true"
-					android:layout_alignParentStart="true">
+					android:paddingBottom="@dimen/activity_vertical_margin">
 					<TextView
 						android:id="@+id/location_title"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginLeft="12dp"
-						tools:text="基站定位"/>
+						android:text="GPS定位"/>
 					<View
 						android:layout_width="6dp"
 						android:layout_height="wrap_content"
 						android:layout_alignTop="@id/location_title"
 						android:layout_alignBottom="@id/location_title"
 						android:background="@color/colorPrimary"/>
+					<TextView
+						android:id="@+id/latitude_title"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@+id/location_title"
+						android:text="经度"/>
+					<TextView
+						android:id="@+id/latitude"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@id/latitude_title" />
+					<TextView
+						android:id="@+id/longitude_title"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@+id/latitude"
+						android:text="纬度"/>
+					<TextView
+						android:id="@+id/longitude"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@id/longitude_title" />
 				</RelativeLayout>
 			</RelativeLayout>
 		</android.support.v7.widget.CardView>

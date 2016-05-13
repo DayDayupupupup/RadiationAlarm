@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import edu.neu.radiationalarm.info.GSMCellLocationInfo;
+import edu.neu.radiationalarm.info.NeighborInfo;
 import edu.neu.radiationalarm.info.RecentData;
 
 /**
@@ -34,7 +35,7 @@ public class DBManager {
 
 //        db.execSQL("delete from around");
         db.execSQL("delete from station");
-        List<CellInfo> infos = info.getInfo();
+//        List<NeighborInfo> infos = info.getInfo();
 //        for(CellInfo neigh : infos) {
 //            db.execSQL("insert into around values(?, ?, ?)", new String[] {null,
 //                    String.valueOf(neigh.getLac()), String.valueOf(neigh.getCid())});
