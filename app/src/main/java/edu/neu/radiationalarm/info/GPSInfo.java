@@ -11,7 +11,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresPermission;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -23,40 +25,68 @@ import edu.neu.radiationalarm.activity.MainActivity;
  * Created by Mac on 2016/5/6.
  */
 public class GPSInfo {
-    private static final String TAG = "GPS:";
+    private static final String TAG = "GPS";
     private LocationManager lm;
     private Location location;
     private double latitude;
     private double longitude;
 
 
-    public GPSInfo(Context context){
-        Log.e(TAG,"准备获取GPS信息");
+    public GPSInfo(final Context context) {
+        Log.e(TAG, "准备获取GPS信息");
         lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            Log.e(TAG,"GPS已开");
-            getLocation(context);
-        }else {
-            Log.e(TAG,"GPS未开，开启gps");
-            Intent GPSIntent = new Intent();
-            GPSIntent.setClassName("com.android.settings",
-                    "com.android.settings.widget.SettingsAppWidgetProvider");
-            GPSIntent.addCategory("android.intent.category.ALTERNATIVE");
-            GPSIntent.setData(Uri.parse("custom:3"));
-            try {
-                PendingIntent.getBroadcast(context, 0, GPSIntent, 0).send();
-            } catch (PendingIntent.CanceledException e) {
-                e.printStackTrace();
+        if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Log.e(TAG, "GPS已开");
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                getLocation();
             }
-            getLocation(context);
+//            location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//            getLocation();
+        } else {
+            Log.e(TAG, "GPS未开，开启gps");
+            toggleGPS(context);
+            new Handler() {
+            }.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        getLocation();
+                    }
+//                    getLocation();
+                }
+            }, 2000);
         }
     }
 
-     public void getLocation(Context context){
-         Log.e(TAG,"开始获取GPS信息");
-         if (ContextCompat.checkSelfPermission(context,Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
-             Log.e(TAG,"已授予gps权限");
-              location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+    private void toggleGPS(Context context) {
+
+        Intent gpsIntent = new Intent();
+        gpsIntent.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+        gpsIntent.addCategory("android.intent.category.ALTERNATIVE");
+        gpsIntent.setData(Uri.parse("custom:3"));
+        try {
+            PendingIntent.getBroadcast(context, 0, gpsIntent, 0).send();
+        } catch (PendingIntent.CanceledException e) {
+            e.printStackTrace();
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
+                Location location1 = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (location1 != null) {
+                    latitude = location1.getLatitude(); // 经度
+                    longitude = location1.getLongitude(); // 纬度
+                } else {
+                    Log.e(TAG, "未授予gps权限");
+                }
+            }
+        }
+    }
+
+    public Location getLocation() {
+        Log.e(TAG, "开始获取GPS信息");
+        Log.e(TAG, "已授予gps权限");
+//        location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
              Log.e(TAG,"能获取到location");
              if (location != null){
                  Log.e(TAG,"当前可以获取到gps");
@@ -66,11 +96,9 @@ public class GPSInfo {
 
              }else{
                  Log.e(TAG,"当前位置获取不到gps");
-                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,  locationListener);
+               //  lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,locationListener);
              }
-         }else {
-             Log.e(TAG,"未授予gps权限");
-         }
+        return location;
     }
 
     private final LocationListener locationListener = new LocationListener() {
@@ -101,8 +129,5 @@ public class GPSInfo {
 
     public double getLatitude(){return  latitude;}
     public double getLongitude(){return longitude;}
-
-    public Location getLocation() {
-        return location;
-    }
+    public LocationManager getLm(){return lm;}
 }

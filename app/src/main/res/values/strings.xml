@@ -2,11 +2,14 @@
     <string name="app_name">RadiationAlarm</string>
     <string name="radiation_detection_fragment_title">辐射监测</string>
     <string name="base_station_radiation_detection_title">基站监测</string>
-    <string name="phone_info_title">手机信息</string>
-    <string name="network_type_title">网络类型</string>
+    <string name="baidumap_fragment_title">地图显示</string>
+    <string name="phone_info_title">基站信息</string>
     <string name="isp_title">网络服务商</string>
     <string name="lac_title">LAC</string>
     <string name="cid_title">CID</string>
     <string name="station_strength_title">基站信号强度</string>
     <string name="title_activity_b">BActivit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

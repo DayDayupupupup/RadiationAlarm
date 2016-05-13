@@ -18,12 +18,17 @@ import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 import android.widget.AutoCompleteTextView;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import edu.neu.radiationalarm.activity.MainActivity;
-
 
 /**
  * Created by Administrator on 2015/12/12.
@@ -73,30 +78,24 @@ public class GSMCellLocationInfo {
         mcc = Integer.parseInt(operator.substring(0, 3));
         mnc = Integer.parseInt(operator.substring(3));
 
-        Log.d("基站信息：","mcc="+mcc);
-        Log.d("基站信息：","mnc="+mnc);
+        Log.d("基站信息：","mcc="+mcc+"mnc="+mnc);
 
-        boolean ifhas = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        if (ifhas){
-            Log.d("验证信息","有权限");
-        }else{
-            Log.d("验证信息","wu权限");
-        }
-
+//        boolean ifhas = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+//        if (ifhas){
+//            Log.d("验证信息","有权限");
+//        }else{
+//            Log.d("验证信息","wu权限");
+//        }
         GsmCellLocation location = (GsmCellLocation) manager.getCellLocation();
         /**通过GsmCellLocation获取中国移动和联通 LAC 和cellID */
         lac = location.getLac();
         cellid = location.getCid();
 
-        Log.d("基站信息：","lac="+lac);
-        Log.d("基站信息：","cellid="+cellid);
-        int strength = 0;
+        Log.d("基站信息：","lac="+lac+"cellid="+cellid);
 
-        /**通过getNeighboringCellInfo获取BSSS */
-//        infos = manager.getNeighboringCellInfo();
         List<CellInfo> allCellInfo = manager.getAllCellInfo();
         infos = new ArrayList<NeighborInfo>();
-//        Log.d("基站总数：","总数："+allCellInfo.size());
+        int size = 0;
         for (CellInfo info : allCellInfo) {
             NeighborInfo neighborInfo = new NeighborInfo();
             if(info instanceof CellInfoGsm){
@@ -104,8 +103,11 @@ public class GSMCellLocationInfo {
                 neighborInfo.setCid(((CellInfoGsm) info).getCellIdentity().getCid());
                 neighborInfo.setBss(((CellInfoGsm) info).getCellSignalStrength().getDbm());
                 neighborInfo.setMcc(((CellInfoGsm) info).getCellIdentity().getMcc());
-                neighborInfo.setMnc(((CellInfoGsm) info).getCellIdentity().getMnc());
-                infos.add(neighborInfo);
+               neighborInfo.setMnc(((CellInfoGsm) info).getCellIdentity().getMnc());
+                if(((CellInfoGsm) info).getCellIdentity().getMcc()==460){
+                    infos.add(neighborInfo);
+                    size = size + 1;
+                }
 //                Log.d("GsmCellInfo",infos.toString());
             }else if (info instanceof CellInfoCdma){
                 neighborInfo.setLac(((CellInfoCdma) info).getCellIdentity().getSystemId());//daiding
@@ -121,7 +123,10 @@ public class GSMCellLocationInfo {
                 neighborInfo.setBss (((CellInfoLte) info).getCellSignalStrength().getDbm());
                 neighborInfo.setMcc(((CellInfoLte) info).getCellIdentity().getMcc());
                 neighborInfo.setMnc(((CellInfoLte) info).getCellIdentity().getMnc());
-                infos.add(neighborInfo);
+                if (((CellInfoLte) info).getCellIdentity().getMcc()==460){
+                    infos.add(neighborInfo);
+                    size = size + 1;
+                }
 //                Log.d("LTECellInfo",infos.toString());
             }else if(info instanceof CellInfoWcdma){
                 neighborInfo.setLac (((CellInfoWcdma) info).getCellIdentity().getLac());
@@ -129,18 +134,31 @@ public class GSMCellLocationInfo {
                 neighborInfo.setBss(((CellInfoWcdma) info).getCellSignalStrength().getDbm());
                 neighborInfo.setMcc(((CellInfoWcdma) info).getCellIdentity().getMcc());
                 neighborInfo.setMnc(((CellInfoWcdma) info).getCellIdentity().getMnc());
-                infos.add(neighborInfo);
-//                Log.d("LTECellInfo",infos.toString());
+                if (((CellInfoWcdma) info).getCellIdentity().getMcc()==460){
+                    infos.add(neighborInfo);
+                    size = size + 1;
+                }
             }else{
                 Log.d("CellInfo","Unknown Cell");
             }
         }
-        Log.d("XINXI",infos.toString());;
-//            strength += (-133 + 2 * info.getRssi());// 获取邻区基站信号强度
-//            info.getLac();// 取出当前邻区的LAC
-//            info.getCid();// 取出当前邻区的CID
-//            Log.d("邻近基站","LAC:"+info.getLac()+"CID："+info.getCid()+"强度："+strength);
+        Log.d("邻近基站","总数："+size + infos.toString());
+    }
 
+    public void getCellLocation(){
+        HttpClient client = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("http://api.cellid.cn/cellid.php");
+        String token = "e052e14fd7dab008f6580d27c9d5c91d";
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("lac",lac);
+            jsonObject.put("cell_id",cellid);
+            jsonObject.put("token",token);
+
+//            HttpResponse response = client.execute(get);
+        }catch (Exception E){
+
+        }
     }
 
     public int getCellid() {

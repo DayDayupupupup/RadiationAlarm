@@ -35,7 +35,8 @@ public class MainActivity extends BaseActivity {
 
 	private final static int[] APP_TAB_TITLE = {
 			R.string.radiation_detection_fragment_title,
-			R.string.base_station_radiation_detection_title
+			R.string.base_station_radiation_detection_title,
+			R.string.baidumap_fragment_title
 	};
 
 	@Bind(R.id.main_app_bar)

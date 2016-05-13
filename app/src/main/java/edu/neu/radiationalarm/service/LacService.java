@@ -1,6 +1,7 @@
 package edu.neu.radiationalarm.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
@@ -64,6 +65,8 @@ public class LacService extends Service {
                     manager.updateInfo(infos);
                     infos.setRecentData(manager.getRecentDatas());
                     infos.updateInfo();
+
+                    gpsInfo.getLocation();
                     if(listener_1 != null && listener_2 != null) {
                         listener_1.onDataChanged();
                         listener_2.onDataChanged();

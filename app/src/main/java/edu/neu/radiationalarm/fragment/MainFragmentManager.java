@@ -29,6 +29,8 @@ public class MainFragmentManager {
 				case 1:
 					newFragment = new BaseStationDetectionFragment();
 					break;
+				case 2:
+					newFragment = new BaiduMapFragment();
 			}
 			if(newFragment == null){
 				throw new FragmentException("Fragment Manager didn't create new fragment instance.");
