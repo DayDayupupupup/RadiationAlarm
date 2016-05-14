@@ -155,7 +155,7 @@ public class GSMCellLocationInfo {
             jsonObject.put("cell_id",cellid);
             jsonObject.put("token",token);
 
-//            HttpResponse response = client.execute(get);
+          //  HttpResponse response = client.execute();
         }catch (Exception E){
 
         }

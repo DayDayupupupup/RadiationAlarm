@@ -21,6 +21,7 @@ public class LacService extends Service {
 
     private FragmentListener_1 listener_1;
     private FragmentListener_2 listener_2;
+    private FragmentListener_3 listener_3;
 
     @Nullable
     @Override
@@ -52,6 +53,10 @@ public class LacService extends Service {
             LacService.this.listener_2 = listener_2;
         }
 
+        public void setFragmentListener_3(FragmentListener_3 listener_3){
+            LacService.this.listener_3 = listener_3;
+        }
+
     }
 
     private void startUpdate() {
@@ -67,9 +72,10 @@ public class LacService extends Service {
                     infos.updateInfo();
 
                     gpsInfo.getLocation();
-                    if(listener_1 != null && listener_2 != null) {
+                    if(listener_1 != null && listener_2 != null && listener_3 != null) {
                         listener_1.onDataChanged();
                         listener_2.onDataChanged();
+                        listener_3.onDataChanged();
                     }
 
                     try {
@@ -90,6 +96,9 @@ public class LacService extends Service {
         void onDataChanged();
     }
     public interface FragmentListener_2 {
+        void onDataChanged();
+    }
+    public interface FragmentListener_3{
         void onDataChanged();
     }
 }
