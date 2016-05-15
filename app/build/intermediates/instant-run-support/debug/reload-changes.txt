@@ -1,9 +1,0 @@
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\activity\MainActivity$1$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\activity\MainActivity$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\activity\MainActivity$2$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\R$string$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\android\support\design\R$string$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\activity\MainActivity$4$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\activity\MainActivity$3$override.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\activity\MainActivity$MyServiceConnection$override.class

@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\Mac\\AndroidStudioProjects\\RadiationAlarm\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\Mac\\AndroidStudioProjects\\RadiationAlarm\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
         "merged": "F:\\RadiationAlarm\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
         "source": "F:\\RadiationAlarm\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }

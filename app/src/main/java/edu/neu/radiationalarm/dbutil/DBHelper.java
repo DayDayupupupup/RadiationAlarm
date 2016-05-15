@@ -11,7 +11,9 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "message.db";
+    private static String ASSETS_NAME     = "message.db";
     private static final int DATABASE_VERSION = 1;
+    private static String DB_PATH        = "/data/data/edu.neu.radiationalarm/databases/";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -73,26 +73,17 @@ public class GSMCellLocationInfo {
     public void updateInfo() {
 
         String operator = manager.getNetworkOperator();
-
         /**通过operator获取 MCC 和MNC*/
         mcc = Integer.parseInt(operator.substring(0, 3));
         mnc = Integer.parseInt(operator.substring(3));
 
-        Log.d("基站信息：","mcc="+mcc+"mnc="+mnc);
-
-//        boolean ifhas = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//        if (ifhas){
-//            Log.d("验证信息","有权限");
-//        }else{
-//            Log.d("验证信息","wu权限");
-//        }
         GsmCellLocation location = (GsmCellLocation) manager.getCellLocation();
         /**通过GsmCellLocation获取中国移动和联通 LAC 和cellID */
         lac = location.getLac();
         cellid = location.getCid();
 
-        Log.d("基站信息：","lac="+lac+"cellid="+cellid);
-
+        Log.d("基站信息：","mcc="+mcc+"mnc="+mnc+"lac="+lac+"cellid="+cellid);
+        /**获取临近基站信息*/
         List<CellInfo> allCellInfo = manager.getAllCellInfo();
         infos = new ArrayList<NeighborInfo>();
         int size = 0;
@@ -159,6 +150,9 @@ public class GSMCellLocationInfo {
         }catch (Exception E){
 
         }
+    }
+    public void getCurrentLocation(){
+
     }
 
     public int getCellid() {

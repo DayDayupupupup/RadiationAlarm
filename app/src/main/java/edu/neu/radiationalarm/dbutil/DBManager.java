@@ -34,7 +34,7 @@ public class DBManager {
 
 
 //        db.execSQL("delete from around");
-        db.execSQL("delete from station");
+//        db.execSQL("delete from station");
 //        List<NeighborInfo> infos = info.getInfo();
 //        for(CellInfo neigh : infos) {
 //            db.execSQL("insert into around values(?, ?, ?)", new String[] {null,

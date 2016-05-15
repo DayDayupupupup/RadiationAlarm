@@ -1,3 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="F:\RadiationAlarm\app\libs\httpcore-4.2.4.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpcore-4.2.4_c116705ece222d007c420988f6a1fdffc4d2500b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.4.0\ddd166d01b3158d1c00576d29f7ed15c030df719\eventbus-2.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\eventbus-2.4.0_03e25c6b3178abc8ecb48b05be1f281aa0724b29\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\xcl-charts.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="123db96349684a0d29a139c7d2953bba27f2d25d">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\xcl-charts_504c1325d37c4d32200b351fba86eb881bf36a9b\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="be1fca06d1bf184b10f9cd3f6d3873d2a06e7f31">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_fc0d6fb7b0b0c8de85240063cfb07a729827c1a7\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\commons-codec-1.6.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b7f0fc8f61ecadeb3695f0b9464755eee44374d4">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-codec-1.6_3cea6442195e70fcea8a7c19c3dc396cca667c4c\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_fc01612de29464a7c3544c08bf018c52b6e719b9\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_d8e6814fa8e812274a8d94a2254bb8347db92f50\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.3.0_77e67f5d88e2f594b91294020fe2d125108b5ca9\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_35a783273ff4b7f0a6dc25fb658a9f870e115dfb\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.3.0_4747179cd733c9f4648eaf9e0291d817b4040d33\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.github.blackfizz\eazegraph\1.2.2\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2584bbecc58c666b0e064ebce64f67a46bfa2aba">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.blackfizz-eazegraph-1.2.2_ce9f4b9f772c5b66e9d81de2d2fd0c4cad98e931\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.diogobernardino\williamchart\2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4bee9d9009127a43b264ac9fd11bc2c37a1395e3">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.diogobernardino-williamchart-2.1_6eac97dccf9ddbbfa6e1ded01e10d61c20098000\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\fluent-hc-4.2.5.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7eda2ae9f77415cf92651191e2229eae2caf0b61">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\fluent-hc-4.2.5_2912046b7bff51cc5f311d633f17d88404f33740\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.3.0_7373490aaa5c1fdd00ce599c553126b71e3b6333\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_03d5c3d8ba7a4bde1b1d9330d29a03202e8793f3\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\httpclient-4.2.5.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3bfeb9062b12d5b340445336790dbc14c59c2d79">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-4.2.5_3a02d799ab8b3df9b6a6a4fd914ae5413db71cf4\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d44365a7f79a292f59bb9d80dc301c146bae9af7">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_e6871be00f29bc5a868d6d4c93de70e3589a81f2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_f7486936d20fe5cecace9f191cb695dc35bd15ff\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\BaiduLBS_Android.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2c4790d8cd4b7c12026ea2fdc49660991286c713">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\BaiduLBS_Android_c3c6c73c4cfea04f6b43dfd838dbb61b1cad4e39\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_c67b9384f4b58f8f1e6361efce0d3b20d9fae225\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-7.0.1_fc861cbde294a7e4a9efd57936d766cb077b60e2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-2.4.0_dd460f45d27a359687729c3c169358b1eda3100b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v2.1.6\b036abbb61656165da99cf44898e4b9123687e65\MPAndroidChart-v2.1.6.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b036abbb61656165da99cf44898e4b9123687e65">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v2.1.6_6005432a56cb841c7b01c07617829df77b6f9c6b\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\httpmime-4.2.5.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6efc2f9df23c2ac4d3b701a11cab9f9fa6a641d4">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpmime-4.2.5_141f6079d630c67b05f4b3c58d02a038eeffd4e3\classes.dex" />
+    </item>
+    <item
+        jar="F:\RadiationAlarm\app\libs\httpclient-cache-4.2.5.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="313cfeb950089985994736aa08885711c56b7e1e">
+        <dex dex="F:\RadiationAlarm\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-cache-4.2.5_5aaf1e30672507979b938b5c406508e29ae3668c\classes.dex" />
+    </item>
+
+</items>
