@@ -44,22 +44,10 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
     double x = 0;
     double y = 0;
 
-    public class SDKReceiver extends BroadcastReceiver {
-        public void onReceive(Context context, Intent intent) {
-            String s = intent.getAction();
-            if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
-                Log.d("key 验证出错! ","请在 AndroidManifest.xml 文件中检查 key 设置");
-            } else if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK)) {
-                Log.d("key 验证成功!"," 功能可以正常使用");
-            }
-            else if (s.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
-                Log.d("网络出错","...");
-            }
-        }
-    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getContext());
     }
     @Override
     @Nullable
