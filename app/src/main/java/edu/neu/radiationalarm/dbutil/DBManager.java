@@ -35,15 +35,15 @@ public class DBManager {
 
 //        db.execSQL("delete from around");
 //        db.execSQL("delete from station");
-//        List<NeighborInfo> infos = info.getInfo();
-//        for(CellInfo neigh : infos) {
-//            db.execSQL("insert into around values(?, ?, ?)", new String[] {null,
-//                    String.valueOf(neigh.getLac()), String.valueOf(neigh.getCid())});
-//        }
+        List<NeighborInfo> infos = info.getInfo();
+        for(NeighborInfo neigh : infos) {
+            db.execSQL("insert into station values(?, ?, ?, ?, ?)", new String[] {null,
+                    String.valueOf(neigh.getMcc()),String.valueOf(neigh.getMnc()),String.valueOf(neigh.getLac()), String.valueOf(neigh.getCid())});
+        }
 
-        db.execSQL("insert into station values(?, ?, ?, ?, ?)", new String[]{null,
-                String.valueOf(info.getMcc()), String.valueOf(info.getMnc()),
-                String.valueOf(info.getLac()), String.valueOf(info.getCellid())});
+//        db.execSQL("insert into station values(?, ?, ?, ?, ?)", new String[]{null,
+//                String.valueOf(info.getMcc()), String.valueOf(info.getMnc()),
+//                String.valueOf(info.getLac()), String.valueOf(info.getCellid())});
 
 
         if(db.rawQuery("select * from imm", null).getCount() == 5) {

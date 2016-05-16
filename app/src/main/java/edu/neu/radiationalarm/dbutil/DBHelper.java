@@ -27,11 +27,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 "MCC int," +
                 "MNC int," +
                 "LAC int," +
-                "CID int)");
+                "CID int" +
+                "LAT double" +
+                "LON double)");
         db.execSQL("create table if not exists imm (" +
                 "id integer primary key autoincrement," +
                 "BSSS int," +
-                "time timestamp not null default (datetime('now','localtime')))");
+                "Time timestamp not null default (datetime('now','localtime')))");
 //        db.execSQL("create table if not exists around (" +
 //                "id integer primary key autoincrement," +
 //                "LAC int," +

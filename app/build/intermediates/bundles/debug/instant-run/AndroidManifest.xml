@@ -12,10 +12,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <meta-data
-        android:name="com.baidu.lbsapi.API_KEY"
-        android:value="94:F4:58:96:99:14:2B:82:6C:0D:16:16:D3:F8:F5:4F:35:90:A2:8F;edu.neu.radiationalarm" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name="com.android.tools.fd.runtime.BootstrapApplication"
@@ -38,6 +37,10 @@
             android:exported="true" />
 
         <activity android:name="edu.neu.radiationalarm.activity.BaseActivity" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="YriFKgmgrS94sv5zfCaZQ2ijaQxZ2ENF" />
     </application>
 
 </manifest>

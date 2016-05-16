@@ -96,7 +96,7 @@ public class GPSInfo {
 
              }else{
                  Log.e(TAG,"当前位置获取不到gps");
-               //  lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,locationListener);
+//                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0,locationListener);
              }
         return location;
     }

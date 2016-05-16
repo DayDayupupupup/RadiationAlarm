@@ -24,6 +24,8 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.baidu.mapapi.SDKInitializer;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.neu.radiationalarm.R;
@@ -61,6 +63,7 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 
 		ButterKnife.bind(this);
+		SDKInitializer.initialize(getApplicationContext());
 
 		Log.e("...", "  " + TelephonyManager.SIM_STATE_ABSENT);
 
