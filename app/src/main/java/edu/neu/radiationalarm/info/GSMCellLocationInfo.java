@@ -43,7 +43,7 @@ public class GSMCellLocationInfo {
     private int lac;
     private int cellid;
     private int strengh;
-    private List<NeighborInfo> infos;
+    private static List<NeighborInfo> infos;
     private List<RecentData> recentData;
 
     public GSMCellLocationInfo(int mcc, int mnc, int lac, int cellid, int strengh) {
@@ -67,6 +67,10 @@ public class GSMCellLocationInfo {
         }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 
         updateInfo();
+    }
+
+    public GSMCellLocationInfo() {
+
     }
 
     @TargetApi(23)
@@ -134,23 +138,10 @@ public class GSMCellLocationInfo {
             }
         }
         Log.d("邻近基站","总数："+size + infos.toString());
+        setInfos(infos);
+        MyLocationUtil.getMyLatLng();
     }
 
-    public void getCellLocation(){
-        HttpClient client = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet("http://api.cellid.cn/cellid.php");
-        String token = "e052e14fd7dab008f6580d27c9d5c91d";
-        try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("lac",lac);
-            jsonObject.put("cell_id",cellid);
-            jsonObject.put("token",token);
-
-          //  HttpResponse response = client.execute();
-        }catch (Exception E){
-
-        }
-    }
     public void getCurrentLocation(){
 
     }
@@ -158,7 +149,9 @@ public class GSMCellLocationInfo {
     public int getCellid() {
         return cellid;
     }
-
+    public void setInfos(List<NeighborInfo> infos){
+        this.infos = infos;
+    }
     public List<NeighborInfo> getInfo() {
         return infos;
     }
@@ -184,7 +177,6 @@ public class GSMCellLocationInfo {
     }
 
     public List<RecentData> getRecentData() {
-
         return recentData;
     }
 

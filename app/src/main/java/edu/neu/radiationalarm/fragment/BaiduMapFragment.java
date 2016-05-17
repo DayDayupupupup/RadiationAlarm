@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,16 +21,22 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.model.inner.GeoPoint;
+import com.baidu.mapapi.utils.CoordinateConverter;
 
 
 import butterknife.ButterKnife;
 import edu.neu.radiationalarm.R;
 import edu.neu.radiationalarm.activity.MainActivity;
 import edu.neu.radiationalarm.info.BaiDuUtil;
+import edu.neu.radiationalarm.info.ConvertUtil;
 import edu.neu.radiationalarm.service.LacService;
 
 public class BaiduMapFragment extends Fragment implements LacService.FragmentListener_3 {
@@ -41,32 +48,27 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
     private BaiduMap mBaiduMap;
 
     TextView mAddress;
-    double x = 0;
-    double y = 0;
+    double lat;
+    double lng;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getContext());
     }
     @Override
     @Nullable
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        SDKInitializer.initialize(getContext());
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_baidu_map, container, false);
         ButterKnife.bind(this, rootView);
 
         mAddress = (TextView) rootView.findViewById(R.id.detail_address);
-
         mMapView = (MapView) rootView.findViewById(R.id.b_map_View);
-
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-        x=41.653367;
-        y=123.42347;
-        setLocation(x,y);
-        getDetailAddr(x,y);
 
+        initView(inflater.getContext());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +82,6 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
                 });
             }
         }).start();
-
         return rootView;
     }
     private void setLocation(double x, double y) {
@@ -90,6 +91,17 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
         BitmapDescriptor bitmap = BitmapDescriptorFactory
                 .fromResource(R.mipmap.heart);
         //构建MarkerOption，用于在地图上添加Marker
+        //定义地图状态
+        MapStatus mMapStatus = new MapStatus.Builder()
+                .target(point)
+                .zoom(18)
+                .build();
+        //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
+
+
+        MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+        //改变地图状态
+        mBaiduMap.setMapStatus(mMapStatusUpdate);
         OverlayOptions option = new MarkerOptions()
                 .position(point)
                 .icon(bitmap);
@@ -109,7 +121,6 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
             }
         }).start();
     }
-
     Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             // 要做的事情
@@ -124,31 +135,44 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
         super.onResume();
         mMapView.onResume();
     }
-
     @Override
     public void onPause() {
         super.onPause();
         mMapView.onPause();
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         mMapView.onDestroy();
     }
-   public void updateText(){
+    private void initView(Context context) {
+    }
+    public void updateText(){
+        lat=41.765647;
+        lng=123.413032;
+        new Thread(){
+            @Override
+            public void run()
+            {
+                String bdz = ConvertUtil.convert(lng,lat);
+                String[] add = null;
+                add = bdz.split(",");
+                double x = Double.parseDouble(add[0]);
+                double y = Double.parseDouble(add[1]);
+                setLocation(y,x);
+                getDetailAddr(y,x);
 
-   }
-
+            }
+        }.start();
+    }
 
     @Override
     public void onDataChanged() {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                updateText();
             }
         });
-
     }
 }

@@ -11,13 +11,19 @@ public class NeighborInfo {
     int lac;
     int cid;
     int bss;
+    double lat;
+    double lon;
+    String address;
 
-    public NeighborInfo(int mcc, int mnc, int lac, int cid, int bss) {
+    public NeighborInfo(int mcc, int mnc, int lac, int cid, int bss, double lat, double lon, String address) {
         this.mcc = mcc;
         this.mnc = mnc;
         this.lac = lac;
         this.cid = cid;
         this.bss = bss;
+        this.lat = lat;
+        this.lon = lon;
+        this.address = address;
     }
 
     public NeighborInfo() {
@@ -63,21 +69,42 @@ public class NeighborInfo {
         this.bss = bss;
     }
 
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
-//        Log.d("", "mcc=" + mcc +
-//                ", mnc=" + mnc +
-//                ", lac=" + lac +
-//                ", cid=" + cid +
-//                ", bss=" + bss);
         return "NeighborInfo{" +
                 "mcc=" + mcc +
                 ", mnc=" + mnc +
                 ", lac=" + lac +
                 ", cid=" + cid +
                 ", bss=" + bss +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                ", address='" + address + '\'' +
                 '}';
-
     }
-
 }
