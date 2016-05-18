@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class BaiDuUtil {
     public static String getAddress(String lat, String lng) {
 
-        String url = "http://api.map.baidu.com/geocoder/v2/?output=json&ak=YriFKgmgrS94sv5zfCaZQ2ijaQxZ2ENF&location="+lat+","+lng+"&mcode=94:F4:58:96:99:14:2B:82:6C:0D:16:16:D3:F8:F5:4F:35:90:A2:8F;edu.neu.radiationalarm&qq-pf-to=pcqq.c2c";
+        String url = "http://api.map.baidu.com/geocoder/v2/?output=json&ak=YriFKgmgrS94sv5zfCaZQ2ijaQxZ2ENF&location="+lat+","+lng+"&mcode=B7:18:91:62:D7:AB:A9:0F:2C:C7:DD:0B:33:61:A1:4A:58:04:24:E6;edu.neu.radiationalarm&qq-pf-to=pcqq.c2c";
         String result = sendHttpGet(url);
         JSONObject object = null;
         JSONObject obj = null;

@@ -3,6 +3,8 @@ package edu.neu.radiationalarm.info;
 import android.util.JsonReader;
 import android.util.Log;
 
+import com.baidu.mapapi.model.LatLng;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -44,7 +46,7 @@ public class MyLocationUtil {
                         info.setLat(lat);
                         info.setLon(lon);
                         info.setAddress(address);
-                        Log.d(Tag, info.toString());
+//                        Log.d(Tag, info.toString());
                     }else{
                         list.remove(info);
                     }
@@ -52,13 +54,13 @@ public class MyLocationUtil {
                     e.printStackTrace();
                 }
             }
-        getMyLatLng();
         return list;
     }
 
-    public static void getMyLatLng(){
-        if(list.size()>=3) {
-                Collections.sort(list, new Comparator<NeighborInfo>() {
+    public static List getMyLatLng(){
+        List<NeighborInfo> list1 = getCellLatLng();
+        if(list1.size()>=3) {
+                Collections.sort(list1, new Comparator<NeighborInfo>() {
                     @Override
                     public int compare(NeighborInfo lhs, NeighborInfo rhs) {
                         Integer bss1 = lhs.getBss();
@@ -79,6 +81,13 @@ public class MyLocationUtil {
 //        int bss3 = list.get(3).getBss();
 //        double myLng, myLat;
 //        double ra,rb,rc;
+        return list;
+    }
+    public LatLng lonLat2Mercator(LatLng lonLat) {
+                     double mercatorX,mercatorY;
+                 mercatorX = lonLat.longitude * 20037508.34 / 180;
+                 mercatorY = lonLat.latitude * 20037508.34 / 180;
+        return lonLat;
     }
 
 }

@@ -32,11 +32,15 @@ import com.baidu.mapapi.model.inner.GeoPoint;
 import com.baidu.mapapi.utils.CoordinateConverter;
 
 
+import java.util.List;
+
 import butterknife.ButterKnife;
 import edu.neu.radiationalarm.R;
 import edu.neu.radiationalarm.activity.MainActivity;
 import edu.neu.radiationalarm.info.BaiDuUtil;
 import edu.neu.radiationalarm.info.ConvertUtil;
+import edu.neu.radiationalarm.info.MyLocationUtil;
+import edu.neu.radiationalarm.info.NeighborInfo;
 import edu.neu.radiationalarm.service.LacService;
 
 public class BaiduMapFragment extends Fragment implements LacService.FragmentListener_3 {
@@ -44,6 +48,7 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
     /**
      * MapView 是地图主控件
      */
+    private static final String Tag = "百度地图显示";
     private MapView mMapView = null;
     private BaiduMap mBaiduMap;
 
@@ -148,20 +153,25 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
     private void initView(Context context) {
     }
     public void updateText(){
-        lat=41.765647;
-        lng=123.413032;
+//        lat=41.653367;
+//        lng=123.42347;
         new Thread(){
             @Override
             public void run()
             {
-                String bdz = ConvertUtil.convert(lng,lat);
-                String[] add = null;
-                add = bdz.split(",");
-                double x = Double.parseDouble(add[0]);
-                double y = Double.parseDouble(add[1]);
-                setLocation(y,x);
-                getDetailAddr(y,x);
-
+                List<NeighborInfo> list = MyLocationUtil.getMyLatLng();
+                Log.d(Tag,list.toString());
+                for(int i = 0;i< 3; i++){
+                    lng = list.get(i).getLon();
+                    lat = list.get(i).getLat();
+                    String bdz = ConvertUtil.convert(lng,lat);
+                    String[] add = null;
+                    add = bdz.split(",");
+                    double x = Double.parseDouble(add[0]);
+                    double y = Double.parseDouble(add[1]);
+                    setLocation(y,x);
+                    getDetailAddr(y,x);
+                }
             }
         }.start();
     }

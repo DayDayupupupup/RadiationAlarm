@@ -383,14 +383,16 @@ public class RadiationDetectionFragment extends Fragment implements LacService.F
 	@Override
 	public void onDataChanged() {
 
-		getActivity().runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				level.setText(binder.getInfo().getStrengh() + " dBm");
-				/*LineData mLineData = getLineData(0);
-				showChart(dial_chart, mLineData, Color.WHITE);*/
-				addEntry();
-			}
-		});
+		getActivity().runOnUiThread(
+				new Runnable() {
+//			@Override
+//			public void run() {
+//				level.setText(binder.getInfo().getStrengh() + " dBm");
+//				/*LineData mLineData = getLineData(0);
+//				showChart(dial_chart, mLineData, Color.WHITE);*/
+//				addEntry();
+//			}
+		}
+ );
 	}
 }

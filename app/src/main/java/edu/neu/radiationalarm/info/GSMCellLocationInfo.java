@@ -103,18 +103,18 @@ public class GSMCellLocationInfo {
                     infos.add(neighborInfo);
                     size = size + 1;
                 }
-//                Log.d("GsmCellInfo",infos.toString());
+//                Log.d("GsmCellInfo",info.toString());
             }else if (info instanceof CellInfoCdma){
-                neighborInfo.setLac(((CellInfoCdma) info).getCellIdentity().getSystemId());//daiding
+                neighborInfo.setLac(((CellInfoCdma) info).getCellIdentity().getNetworkId());
                 neighborInfo.setCid(((CellInfoCdma) info).getCellIdentity().getBasestationId());
                 neighborInfo.setBss(((CellInfoCdma) info).getCellSignalStrength().getDbm());
-                neighborInfo.setMcc(((CellInfoCdma) info).getCellIdentity().getNetworkId());
-//                neighborInfo.setMnc(((CellInfoCdma) info).getCellIdentity().);
+//                neighborInfo.setMcc(((CellInfoCdma) info).getCellIdentity().;
+                neighborInfo.setMnc(((CellInfoCdma) info).getCellIdentity().getSystemId());
                 infos.add(neighborInfo);
-//                Log.d("CdmaCellInfo",infos.toString());
+//                Log.d("CdmaCellInfo",info.toString());
             }else if(info instanceof CellInfoLte){
                 neighborInfo.setLac (((CellInfoLte) info).getCellIdentity().getTac());
-                neighborInfo.setCid(((CellInfoLte) info).getCellIdentity().getPci());
+                neighborInfo.setCid(((CellInfoLte) info).getCellIdentity().getCi());
                 neighborInfo.setBss (((CellInfoLte) info).getCellSignalStrength().getDbm());
                 neighborInfo.setMcc(((CellInfoLte) info).getCellIdentity().getMcc());
                 neighborInfo.setMnc(((CellInfoLte) info).getCellIdentity().getMnc());
@@ -122,7 +122,7 @@ public class GSMCellLocationInfo {
                     infos.add(neighborInfo);
                     size = size + 1;
                 }
-//                Log.d("LTECellInfo",infos.toString());
+//                Log.d("LTECellInfo",info.toString());
             }else if(info instanceof CellInfoWcdma){
                 neighborInfo.setLac (((CellInfoWcdma) info).getCellIdentity().getLac());
                 neighborInfo.setCid (((CellInfoWcdma) info).getCellIdentity().getCid());
@@ -133,13 +133,14 @@ public class GSMCellLocationInfo {
                     infos.add(neighborInfo);
                     size = size + 1;
                 }
+//                Log.d("WcdmaCellInfo",info.toString());
             }else{
                 Log.d("CellInfo","Unknown Cell");
             }
         }
         Log.d("邻近基站","总数："+size + infos.toString());
         setInfos(infos);
-        MyLocationUtil.getMyLatLng();
+//        MyLocationUtil.getMyLatLng();
     }
 
     public void getCurrentLocation(){
