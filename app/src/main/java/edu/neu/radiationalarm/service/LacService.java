@@ -28,13 +28,10 @@ public class LacService extends Service {
     public IBinder onBind(Intent intent) {
 
         binder = new MyBinder();
-        Log.d("验证信息","LacService");
         infos = new GSMCellLocationInfo(this);
         gpsInfo = new GPSInfo(this);
         manager = new DBManager(this);
         startUpdate();
-
-
         return binder;
     }
 
@@ -56,7 +53,6 @@ public class LacService extends Service {
         public void setFragmentListener_3(FragmentListener_3 listener_3){
             LacService.this.listener_3 = listener_3;
         }
-
     }
 
     private void startUpdate() {
@@ -70,23 +66,19 @@ public class LacService extends Service {
                     manager.updateInfo(infos);
                     infos.setRecentData(manager.getRecentDatas());
                     infos.updateInfo();
-
-                    gpsInfo.getLocation();
+                    gpsInfo.getLatitude();
+                    gpsInfo.getLongitude();
                     if(listener_1 != null && listener_2 != null && listener_3 != null) {
                         listener_1.onDataChanged();
                         listener_2.onDataChanged();
                         listener_3.onDataChanged();
                     }
-
                     try {
                         Thread.sleep(1000*60);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
                 }
-
-
             }
         }).start();
 

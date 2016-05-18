@@ -98,9 +98,7 @@ public class BaseStationDetectionFragment extends Fragment implements LacService
 
 	private void updateText() {
 		info = ((MainActivity) getActivity()).getBinder().getInfo();
-//		if(info.getMcc()==460) {
-//			network_type.setText("中国");
-//		}
+
 		if(info.getMnc()==0){
 			network_provider.setText("中国移动");
 		}else if(info.getMnc()==1){
@@ -113,13 +111,16 @@ public class BaseStationDetectionFragment extends Fragment implements LacService
 		bsss.setText(info.getStrengh() + "");
 
 		gpsInfo = ((MainActivity) getActivity()).getBinder().getGPSInfo();
-		if(gpsInfo.getLocation()!= null) {
-			latitude.setText(gpsInfo.getLatitude() + "");
-			longitude.setText(gpsInfo.getLongitude() + "");
-		}else {
-			latitude.setText("无");
-			longitude.setText("无");
-		}
+		latitude.setText(gpsInfo.getLatitude() + "");
+		longitude.setText(gpsInfo.getLongitude() + "");
+//		if(gpsInfo.getLatitude() != null) {
+//			latitude.setText(gpsInfo.getLatitude() + "");
+//			longitude.setText(gpsInfo.getLongitude() + "");
+//		}else {
+//			latitude.setText("无");
+//			longitude.setText("无");
+//		}
+
 	}
 
 	@Override
