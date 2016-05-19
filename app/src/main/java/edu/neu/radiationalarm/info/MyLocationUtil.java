@@ -69,25 +69,37 @@ public class MyLocationUtil {
                     }
                 });
             Log.d(Tag,list.toString());
+
+        }else {
+            Log.d(Tag,"基站数小于3，无法定位");
+
+            return null;
         }
-//        double x1 = list.get(1).getLon();
-//        double y1 = list.get(1).getLat();
-//        double x2 = list.get(2).getLon();
-//        double y2 = list.get(2).getLat();
-//        double x3 = list.get(3).getLon();
-//        double y3 = list.get(3).getLat();
-//        int bss1 = list.get(1).getBss();
-//        int bss2 = list.get(2).getBss();
-//        int bss3 = list.get(3).getBss();
-//        double myLng, myLat;
-//        double ra,rb,rc;
+
+        double x1 = list.get(1).getLon();
+        double y1 = list.get(1).getLat();
+        double mercatorX1 = x1 * 20037508.342789 / 180, mercatorY1 = Math.log(Math.tan((90+y1)*Math.PI/360))/(Math.PI/180);
+        mercatorY1 = y1 * 20037508.342789 / 180;
+
+        double x2 = list.get(2).getLon();
+        double y2 = list.get(2).getLat();
+        double mercatorX2 = x2 * 20037508.342789 / 180, mercatorY2 = Math.log(Math.tan((90+y2)*Math.PI/360))/(Math.PI/180);
+        mercatorY2 = y2 * 20037508.342789 / 180;
+
+        double x3 = list.get(3).getLon();
+        double y3 = list.get(3).getLat();
+        double mercatorX3 = x3 * 20037508.342789 / 180, mercatorY3 = Math.log(Math.tan((90+y3)*Math.PI/360))/(Math.PI/180);
+        mercatorY3 = y3 * 20037508.342789 / 180;
+
+        int bss1 = list.get(1).getBss();
+        int bss2 = list.get(2).getBss();
+        int bss3 = list.get(3).getBss();
+
+        double myLng, myLat;
+        double r1,r2,r3;
+        r1 =10^( (-40 - bss1)/10*4);
+
         return list;
-    }
-    public LatLng lonLat2Mercator(LatLng lonLat) {
-                     double mercatorX,mercatorY;
-                 mercatorX = lonLat.longitude * 20037508.34 / 180;
-                 mercatorY = lonLat.latitude * 20037508.34 / 180;
-        return lonLat;
     }
 
 }

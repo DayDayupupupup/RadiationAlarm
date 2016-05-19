@@ -1,2 +1,2 @@
 CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\fragment\BaiduMapFragment$4$override.class
+CHANGED,C:\Users\Mac\AndroidStudioProjects\RadiationAlarm\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\edu\neu\radiationalarm\dbutil\DBUtil$override.class

@@ -160,17 +160,19 @@ public class BaiduMapFragment extends Fragment implements LacService.FragmentLis
             public void run()
             {
                 List<NeighborInfo> list = MyLocationUtil.getMyLatLng();
-                Log.d(Tag,list.toString());
-                for(int i = 0;i< 3; i++){
-                    lng = list.get(i).getLon();
-                    lat = list.get(i).getLat();
-                    String bdz = ConvertUtil.convert(lng,lat);
-                    String[] add = null;
-                    add = bdz.split(",");
-                    double x = Double.parseDouble(add[0]);
-                    double y = Double.parseDouble(add[1]);
-                    setLocation(y,x);
-                    getDetailAddr(y,x);
+                if (list != null) {
+                    Log.d(Tag, list.toString());
+                    for (int i = 0; i < 3; i++) {
+                        lng = list.get(i).getLon();
+                        lat = list.get(i).getLat();
+                        String bdz = ConvertUtil.convert(lng, lat);
+                        String[] add = null;
+                        add = bdz.split(",");
+                        double x = Double.parseDouble(add[0]);
+                        double y = Double.parseDouble(add[1]);
+                        setLocation(y, x);
+                        getDetailAddr(y, x);
+                    }
                 }
             }
         }.start();

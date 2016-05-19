@@ -29,6 +29,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import edu.neu.radiationalarm.activity.MainActivity;
+import edu.neu.radiationalarm.dbutil.DBUtil;
 
 /**
  * Created by Administrator on 2015/12/12.
@@ -62,7 +63,7 @@ public class GSMCellLocationInfo {
             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
                 super.onSignalStrengthsChanged(signalStrength);
                 strengh = (2 * signalStrength.getGsmSignalStrength() - 113);
-                Log.d("xinhao","strengh"+strengh);
+//                Log.d("xinhao","strengh"+strengh);
             }
         }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 
@@ -140,6 +141,7 @@ public class GSMCellLocationInfo {
         }
         Log.d("邻近基站","总数："+size + infos.toString());
         setInfos(infos);
+        DBUtil.HttpPostData();
 //        MyLocationUtil.getMyLatLng();
     }
 
