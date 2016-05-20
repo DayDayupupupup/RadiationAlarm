@@ -78,26 +78,40 @@ public class MyLocationUtil {
 
         double x1 = list.get(1).getLon();
         double y1 = list.get(1).getLat();
-        double mercatorX1 = x1 * 20037508.342789 / 180, mercatorY1 = Math.log(Math.tan((90+y1)*Math.PI/360))/(Math.PI/180);
-        mercatorY1 = y1 * 20037508.342789 / 180;
+        double mX1 = x1 * 20037508.342789 / 180, mY1 = Math.log(Math.tan((90+y1)*Math.PI/360))/(Math.PI/180);
+        mY1 = y1 * 20037508.342789 / 180;
 
         double x2 = list.get(2).getLon();
         double y2 = list.get(2).getLat();
-        double mercatorX2 = x2 * 20037508.342789 / 180, mercatorY2 = Math.log(Math.tan((90+y2)*Math.PI/360))/(Math.PI/180);
-        mercatorY2 = y2 * 20037508.342789 / 180;
+        double mX2 = x2 * 20037508.342789 / 180, mY2 = Math.log(Math.tan((90+y2)*Math.PI/360))/(Math.PI/180);
+        mY2 = y2 * 20037508.342789 / 180;
 
         double x3 = list.get(3).getLon();
         double y3 = list.get(3).getLat();
-        double mercatorX3 = x3 * 20037508.342789 / 180, mercatorY3 = Math.log(Math.tan((90+y3)*Math.PI/360))/(Math.PI/180);
-        mercatorY3 = y3 * 20037508.342789 / 180;
+        double mX3 = x3 * 20037508.342789 / 180, mY3 = Math.log(Math.tan((90+y3)*Math.PI/360))/(Math.PI/180);
+        mY3 = y3 * 20037508.342789 / 180;
 
         int bss1 = list.get(1).getBss();
         int bss2 = list.get(2).getBss();
         int bss3 = list.get(3).getBss();
 
-        double myLng, myLat;
+        double myLng, myLat,dx,dy,ex,ey,f1,f2;
         double r1,r2,r3;
         r1 =10^( (-40 - bss1)/10*4);
+        r2 =10^( (-40 - bss1)/10*4);
+        r3 =10^( (-40 - bss1)/10*4);
+
+       dx = (mX2*mX2 - mX3*mX3 + mY2*mY2 - mY3*mY3 - r2*r2 + r3*r3 - (mY2*(mX2*mX2*mY2 + mX2*mX2*mY3 + mX3*mX3*mY2 + mX3*mX3*mY3 - mY2*mY3*mY3 - mY2*mY2*mY3 - mY2*r2*r2 + mY2*r3*r3 + mY3*r2*r2 - mY3*r3*r3 + mX2*Math.sqrt((- mX2*mX2 + 2*mX2*mX3 - mX3*mX3 - mY2*mY2 + 2*mY2*mY3 - mY3*mY3 + r2*r2 + 2*r2*r3 + r3*r3)*(mX2*mX2 - 2*mX2*mX3 + mX3*mX3 + mY2*mY2 - 2*mY2*mY3 + mY3*mY3 - r2*r2 + 2*r2*r3 - r3*r3)) - mX3*Math.sqrt((- mX2*mX2 + 2*mX2*mX3 - mX3*mX3 - mY2*mY2 + 2*mY2*mY3 - mY3*mY3 + r2*r2 + 2*r2*r3 + r3*r3)*(mX2*mX2 - 2*mX2*mX3 + mX3*mX3 + mY2*mY2 - 2*mY2*mY3 + mY3*mY3 - r2*r2 + 2*r2*r3 - r3*r3)) + mY2*mY2*mY2 + mY3*mY3*mY3 - 2*mX2*mX3*mY2 - 2*mX2*mX3*mY3))/(mX2*mX2 - 2*mX2*mX3 + mX3*mX3 + mY2*mY2 - 2*mY2*mY3 + mY3*mY3) + (mY3*(mX2*mX2*mY2 + mX2*mX2*mY3 + mX3*mX3*mY2 + mX3*mX3*mY3 - mY2*mY3*mY3 - mY2*mY2*mY3 - mY2*r2+r2 + mY2*r3*r3 + mY3*r2*r2 - mY3*r3*r3 + mX2*Math.sqrt((- mX2*mX2 + 2*mX2*mX3 - mX3*mX3 - mY2*mY2 + 2*mY2*mY3 - mY3*mY3 + r2*r2 + 2*r2*r3 + r3*r3)*(mX2*mX2 - 2*mX2*mX3 + mX3*mX3 + mY2*mY2 - 2*mY2*mY3 + mY3*mY3 - r2*r2 + 2*r2*r3 - r3*r3)) - mX3*Math.sqrt((- mX2*mX2 + 2*mX2*mX3 - mX3*mX3 - mY2*mY2 + 2*mY2*mY3 - mY3*mY3 + r2*r2 + 2*r2*r3 + r3*r3)*(mX2*mX2 - 2*mX2*mX3 + mX3*mX3 + mY2*mY2 - 2*mY2*mY3 + mY3*mY3 - r2*r2 + 2*r2*r3 - r3*r3)) + mY2*mY2*mY2 + mY3*mY3*mY3 - 2*mX2*mX3*mY2 - 2*mX2*mX3*mY3))/(mX2*mX2 - 2*mX2*mX3 + mX3*mX3 + mY2*mY2 - 2*mY2*mY3 + mY3*mY3))/(2*mX2 - 2*mX3);
+     //  dx =  (mX2^2 - mX3^2 + mY2^2 - mY3^2 - r2^2 + r3^2 - (mY2*(mX2^2*mY2 + mX2^2*mY3 + mX3^2*mY2 + mX3^2*mY3 - mY2*mY3^2 - mY2^2*mY3 - mY2*r2^2 + mY2*r3^2 + mY3*r2^2 - mY3*r3^2 - mX2*((- mX2^2 + 2*mX2*mX3 - mX3^2 - mY2^2 + 2*mY2*mY3 - mY3^2 + r2^2 + 2*r2*r3 + r3^2)*(mX2^2 - 2*mX2*mX3 + mX3^2 + mY2^2 - 2*mY2*mY3 + mY3^2 - r2^2 + 2*r2*r3 - r3^2))^(1/2) + mX3*((- mX2^2 + 2*mX2*mX3 - mX3^2 - mY2^2 + 2*mY2*mY3 - mY3^2 + r2^2 + 2*r2*r3 + r3^2)*(mX2^2 - 2*mX2*mX3 + mX3^2 + mY2^2 - 2*mY2*mY3 + mY3^2 - r2^2 + 2*r2*r3 - r3^2))^(1/2) + mY2^3 + mY3^3 - 2*mX2*mX3*mY2 - 2*mX2*mX3*mY3))/(mX2^2 - 2*mX2*mX3 + mX3^2 + mY2^2 - 2*mY2*mY3 + mY3^2) + (mY3*(mX2^2*mY2 + mX2^2*mY3 + mX3^2*mY2 + mX3^2*mY3 - mY2*mY3^2 - mY2^2*mY3 - mY2*r2^2 + mY2*r3^2 + mY3*r2^2 - mY3*r3^2 - mX2*((- mX2^2 + 2*mX2*mX3 - mX3^2 - mY2^2 + 2*mY2*mY3 - mY3^2 + r2^2 + 2*r2*r3 + r3^2)*(mX2^2 - 2*mX2*mX3 + mX3^2 + mY2^2 - 2*mY2*mY3 + mY3^2 - r2^2 + 2*r2*r3 - r3^2))^(1/2) + mX3*((- mX2^2 + 2*mX2*mX3 - mX3^2 - mY2^2 + 2*mY2*mY3 - mY3^2 + r2^2 + 2*r2*r3 + r3^2)*(mX2^2 - 2*mX2*mX3 + mX3^2 + mY2^2 - 2*mY2*mY3 + mY3^2 - r2^2 + 2*r2*r3 - r3^2))^(1/2) + mY2^3 + mY3^3 - 2*mX2*mX3*mY2 - 2*mX2*mX3*mY3))/(mX2^2 - 2*mX2*mX3 + mX3^2 + mY2^2 - 2*mY2*mY3 + mY3^2))/(2*mX2 - 2*mX3);
+
+
+
+
+
+
+
+
+
 
         return list;
     }
